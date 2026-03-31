@@ -184,6 +184,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+        for(int r = 0; r < buttons.size() - 5; r++)
+        {
+            for(int i = buttons.get(r).size() - 1; i >= 4; i--)
+            {
+                var button = buttons.get(r).get(i);
+                if(button.getTag() == tag)
+                {
+                    flag = true;
+                    for(int j = 1; j < WIN_COUNT; j++)
+                    {
+                        var next = buttons.get(r + j).get(i - j);
+                        if(next.getTag() != tag)
+                        {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if(flag) return flag;
+                }
+            }
+        }
+
         return flag;
     }
 
